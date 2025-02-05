@@ -17,7 +17,10 @@ export const ProductListItem = ({
   };
 
   return (
-    <div className="border border-black size-344px" onClick={goDetail}>
+    <div
+      className="border border-black size-344px cursor-pointer"
+      onClick={goDetail}
+    >
       <Image
         className="w-312px h-257px"
         src={imageUrl}

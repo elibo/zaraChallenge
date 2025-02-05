@@ -1,6 +1,6 @@
 import { ProductListEntity } from "./ProductList";
 
-interface Specs {
+export interface Specs {
   screen: string;
   resolution: string;
   processor: string;
@@ -11,13 +11,13 @@ interface Specs {
   screenRefreshRate: string;
 }
 
-interface ColorOption {
+export interface ColorOption {
   name: string;
   hexCode: string;
   imageUrl: string;
 }
 
-interface StorageOption {
+export interface StorageOption {
   capacity: string;
   price: number;
 }

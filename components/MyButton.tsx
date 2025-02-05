@@ -1,6 +1,6 @@
 import "@/app/globals.css";
-import { ProductContext } from "@/context/ProductProvider";
-import { useContext, FC } from "react";
+import { useRouter } from "next/router";
+import { FC } from "react";
 
 interface Props {
   bgColor: string;
@@ -9,22 +9,24 @@ interface Props {
 }
 
 const MyButton: FC<Props> = ({ bgColor, text, textColor }) => {
-  const { setCartItems } = useContext(ProductContext);
-
+  const router = useRouter();
   const doAction = () => {
-    console.log("do action");
+    if (text === "ADD TO CART") {
+      console.log("add");
+    } else {
+      router.push("/");
+    }
   };
 
   return (
-    <div className="w-260">
-      <button
-        className={`pl-10 pr-10 pt-5 pb-5  border border-black bg-${bgColor} text-${textColor}`}
-        type="button"
-        onClick={doAction}
-      >
-        {text}
-      </button>
-    </div>
+    <button
+      className="pl-20 pr-20 pt-5 pb-5  border border-black"
+      type="button"
+      style={{ backgroundColor: bgColor, color: textColor }}
+      onClick={doAction}
+    >
+      {text}
+    </button>
   );
 };
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, createContext } from "react";
-import { getProducts, getProduct } from "../api/products";
+import { getProducts } from "../api/products";
 import { ProductCartEntity, ProductListEntity } from "@/interfaces/ProductList";
 
 interface StateContextType {
@@ -13,15 +13,7 @@ interface StateContextType {
 export const ProductContext = createContext<StateContextType>({
   isLoading: true,
   products: [],
-  cartItems: [
-    {
-      name: "IPHONE 15",
-      basePrice: 1902,
-      imageUrl: "/phone.png",
-      capacity: "512",
-      color: "Green",
-    },
-  ],
+  cartItems: [],
 });
 
 const ProductProvider = ({ children }: { children: React.ReactNode }) => {
@@ -29,15 +21,19 @@ const ProductProvider = ({ children }: { children: React.ReactNode }) => {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
-  const getAllProducts = async () => {
+  const getAllProducts = async (
+    limit?: number,
+    search?: string,
+    offset?: number
+  ) => {
     setIsLoading(true);
-    const response = await getProducts();
+    const response = await getProducts(limit, search, offset);
     setProducts(response);
     setIsLoading(false);
   };
 
   useEffect(() => {
-    getAllProducts();
+    getAllProducts(20);
   }, []);
 
   return (
@@ -46,7 +42,6 @@ const ProductProvider = ({ children }: { children: React.ReactNode }) => {
         isLoading,
         products,
         cartItems,
-        setCartItems,
       }}
     >
       {children}
