@@ -5,3 +5,9 @@ export interface ProductListEntity {
   basePrice: number;
   imageUrl: string;
 }
+
+export interface ProductCartEntity
+  extends Omit<ProductListEntity, "id" | "brand"> {
+  capacity: string;
+  color: string;
+}

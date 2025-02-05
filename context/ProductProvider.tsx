@@ -1,17 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { getProducts } from "../api/products";
-import { ProductListEntity } from "@/interfaces/ProductList";
+"use client";
+
+import { useState, useEffect, createContext } from "react";
+import { getProducts, getProduct } from "../api/products";
+import { ProductCartEntity, ProductListEntity } from "@/interfaces/ProductList";
 
 interface StateContextType {
   isLoading: boolean;
   products: Array<ProductListEntity>;
-  cartItems: Array<ProductListEntity>;
+  cartItems: Array<ProductCartEntity>;
 }
 
-export const ProductContext = React.createContext<StateContextType>({
+export const ProductContext = createContext<StateContextType>({
   isLoading: true,
   products: [],
-  cartItems: [],
+  cartItems: [
+    {
+      name: "IPHONE 15",
+      basePrice: 1902,
+      imageUrl: "/phone.png",
+      capacity: "512",
+      color: "Green",
+    },
+  ],
 });
 
 const ProductProvider = ({ children }: { children: React.ReactNode }) => {
@@ -19,22 +29,12 @@ const ProductProvider = ({ children }: { children: React.ReactNode }) => {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
-  async function getAllProducts() {
+  const getAllProducts = async () => {
     setIsLoading(true);
     const response = await getProducts();
     setProducts(response);
     setIsLoading(false);
-  }
-
-  // async function getProductDetail(id: string) {
-  //   setIsLoading(true);
-  //   await getProduct(id);
-  //   setIsLoading(false);
-  // }
-
-  // function addToCart(product: ProductListEntity) {
-  //   setCartItems(product);
-  // }
+  };
 
   useEffect(() => {
     getAllProducts();
@@ -46,7 +46,7 @@ const ProductProvider = ({ children }: { children: React.ReactNode }) => {
         isLoading,
         products,
         cartItems,
-        // addToCart,
+        setCartItems,
       }}
     >
       {children}

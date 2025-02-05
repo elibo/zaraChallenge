@@ -1,13 +1,9 @@
-import "./globals.css";
-
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
-}
+}>) => {
+  return <div>{children}</div>;
+};
+
+export default RootLayout;

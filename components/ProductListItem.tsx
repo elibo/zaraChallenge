@@ -1,14 +1,23 @@
+"use client";
 import { ProductListEntity } from "@/interfaces/ProductList";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-export default function PostListItem({
+export const ProductListItem = ({
+  id,
   brand,
   name,
   basePrice,
   imageUrl,
-}: ProductListEntity) {
+}: ProductListEntity) => {
+  const router = useRouter();
+
+  const goDetail = () => {
+    router.push(`/detail/${id}`);
+  };
+
   return (
-    <div className="border border-black size-344px">
+    <div className="border border-black size-344px" onClick={goDetail}>
       <Image
         className="w-312px h-257px"
         src={imageUrl}
@@ -27,4 +36,4 @@ export default function PostListItem({
       </div>
     </div>
   );
-}
+};

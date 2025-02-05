@@ -1,11 +1,13 @@
-export const getProducts = async (query?: string) =>
+const myHeaders = new Headers({
+  "x-api-key": "87909682e6cd74208f41a6ef39fe4191",
+});
+
+export const getProducts = async () =>
   await (
     await fetch(
-      `https://prueba-tecnica-api-tienda-moviles.onrender.com/products?${query}`,
+      `https://prueba-tecnica-api-tienda-moviles.onrender.com/products`,
       {
-        headers: {
-          "x-api-key": "87909682e6cd74208f41a6ef39fe4191",
-        },
+        headers: myHeaders,
       }
     )
   ).json();
@@ -15,11 +17,7 @@ export const getProduct = async (id: string) =>
     await fetch(
       `https://prueba-tecnica-api-tienda-moviles.onrender.com/products/${id}`,
       {
-        headers: {
-          "x-api-key": "87909682e6cd74208f41a6ef39fe4191",
-        },
+        headers: myHeaders,
       }
     )
   ).json();
-
-//x-api-key" : 87909682e6cd74208f41a6ef39fe4191

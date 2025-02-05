@@ -1,17 +1,18 @@
-import Header from "@/components/Header";
-import ProductListItem from "@/components/ProductListItem";
-import ProductProvider, { ProductContext } from "@/context/ProductsProvider";
 import { ProductListEntity } from "@/interfaces/ProductList";
 import "@/app/globals.css";
+import { Header } from "@/components/Header";
+import { ProductListItem } from "@/components/ProductListItem";
 
-export default function Home() {
+import ProductProvider, { ProductContext } from "@/context/ProductProvider";
+import Loader from "@/components/Loader";
+
+const Page = () => {
   return (
     <ProductProvider>
       <ProductContext.Consumer>
         {({ isLoading, products }) => (
-          <div className="mt-8 ml-24 mr-24">
+          <>
             <Header />
-
             {!isLoading && products.length > 0 ? (
               <div className="grid grid-cols-5 gap-0">
                 {products.map((product: ProductListEntity) => (
@@ -19,11 +20,13 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <>Error no hay productos</>
+              <Loader />
             )}
-          </div>
+          </>
         )}
       </ProductContext.Consumer>
     </ProductProvider>
   );
-}
+};
+
+export default Page;
