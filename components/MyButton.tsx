@@ -1,6 +1,8 @@
 import "@/app/globals.css";
+import { CartContext } from "@/context/CartProvider";
+import { ProductContext } from "@/context/ProductProvider";
 import { useRouter } from "next/router";
-import { FC } from "react";
+import { FC, useContext } from "react";
 
 interface Props {
   bgColor: string;
@@ -9,10 +11,14 @@ interface Props {
 }
 
 const MyButton: FC<Props> = ({ bgColor, text, textColor }) => {
+  const { addToCart } = useContext(CartContext);
+  const { selectedProduct } = useContext(ProductContext);
+  console.log(selectedProduct);
+
   const router = useRouter();
   const doAction = () => {
     if (text === "ADD TO CART") {
-      console.log("add");
+      addToCart(selectedProduct);
     } else {
       router.push("/");
     }
@@ -22,7 +28,11 @@ const MyButton: FC<Props> = ({ bgColor, text, textColor }) => {
     <button
       className="pl-20 pr-20 pt-5 pb-5  border border-black"
       type="button"
-      style={{ backgroundColor: bgColor, color: textColor }}
+      style={{
+        backgroundColor: !selectedProduct.id ? "grey" : bgColor,
+        color: textColor,
+      }}
+      disabled={!selectedProduct.id}
       onClick={doAction}
     >
       {text}

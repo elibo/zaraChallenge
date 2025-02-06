@@ -1,12 +1,12 @@
 "use client";
 
-import { ProductContext } from "@/context/ProductProvider";
 import Image from "next/image";
 import { useContext } from "react";
 import { useRouter } from "next/navigation";
+import { CartContext } from "@/context/CartProvider";
 
 export const Header = () => {
-  const { cartItems } = useContext(ProductContext);
+  const { cartItems } = useContext(CartContext);
   const router = useRouter();
 
   const goCart = () => {

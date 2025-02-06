@@ -1,25 +1,30 @@
-"use client";
-
 import { useState, useEffect, createContext } from "react";
 import { getProducts } from "../api/products";
-import { ProductCartEntity, ProductListEntity } from "@/interfaces/ProductList";
+import { ProductListEntity } from "@/interfaces/ProductList";
+import { ProductEntity } from "@/interfaces/ProductEntity";
 
-interface StateContextType {
+interface ProductContextType {
   isLoading: boolean;
   products: Array<ProductListEntity>;
-  cartItems: Array<ProductCartEntity>;
+  selectedProduct: ProductEntity;
+  setProduct: (product: ProductEntity) => void;
 }
 
-export const ProductContext = createContext<StateContextType>({
+export const ProductContext = createContext<ProductContextType>({
   isLoading: true,
   products: [],
-  cartItems: [],
+  selectedProduct: {},
+  setProduct: (product: ProductEntity) => {},
 });
 
 const ProductProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState({});
+
+  const setProduct = (product: ProductEntity) => {
+    setSelectedProduct(product);
+  };
 
   const getAllProducts = async (
     limit?: number,
@@ -27,7 +32,7 @@ const ProductProvider = ({ children }: { children: React.ReactNode }) => {
     offset?: number
   ) => {
     setIsLoading(true);
-    const response = await getProducts(limit, search, offset);
+    const response = await getProducts({ limit, search, offset });
     setProducts(response);
     setIsLoading(false);
   };
@@ -41,7 +46,8 @@ const ProductProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         isLoading,
         products,
-        cartItems,
+        selectedProduct,
+        setProduct,
       }}
     >
       {children}

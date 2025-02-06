@@ -3,9 +3,9 @@ import "@/app/globals.css";
 import { Header } from "@/components/Header";
 import { ProductListItem } from "@/components/ProductListItem";
 
-import ProductProvider, { ProductContext } from "@/context/ProductProvider";
 import Loader from "@/components/Loader";
 import { SearchBar } from "@/components/SearchBar";
+import ProductProvider, { ProductContext } from "@/context/ProductProvider";
 
 const Page = () => {
   return (

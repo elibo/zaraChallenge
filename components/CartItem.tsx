@@ -1,20 +1,26 @@
 "use client";
+import { CartContext } from "@/context/CartProvider";
 import { ProductCartEntity } from "@/interfaces/ProductList";
 import Image from "next/image";
+import { useContext } from "react";
 
 export const CartItem = ({
   name,
+  id,
   basePrice,
   imageUrl,
   capacity,
   color,
 }: ProductCartEntity) => {
-  const deleteFromCart = () => {
-    console.log("delete");
+  const { cartItems, total } = useContext(CartContext);
+  console.log(cartItems, total);
+  const { removeFromCart } = useContext(CartContext);
+  const deleteFromCart = (id: string) => {
+    removeFromCart(id);
   };
 
   return (
-    <div className="w-548px h-324px flex" onClick={deleteFromCart}>
+    <div className="w-548px h-324px flex">
       <Image
         className="w-312px h-257px"
         src={imageUrl}
@@ -33,7 +39,7 @@ export const CartItem = ({
 
         <div
           className="pb-12 text-12 font-light text-[#DF0000] cursor-pointer"
-          onClick={deleteFromCart}
+          onClick={() => deleteFromCart(id)}
         >
           Eliminar
         </div>
