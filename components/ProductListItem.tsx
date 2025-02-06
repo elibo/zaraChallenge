@@ -18,23 +18,29 @@ export const ProductListItem = ({
 
   return (
     <div
-      className="border border-black size-344px cursor-pointer"
+      className="border border-black flex flex-col justify-between size-344px cursor-pointer transition delay-150 duration-300  hover:bg-black hover:text-white"
       onClick={goDetail}
     >
-      <Image
-        className="w-312px h-257px"
-        src={imageUrl}
-        alt="img"
-        width={312}
-        height={257}
-      />
-      <div className="flex flex-col pr-8 pl-8">
+      <div className="p-10 flex justify-center">
+        <Image
+          className="scale-100"
+          src={imageUrl}
+          alt="img"
+          width={250}
+          height={250}
+        />
+      </div>
+      <div className="flex flex-col pr-4 pl-4 pb-4">
         <div className="text-10 font-light text-[#79736D]">
           {brand.toUpperCase()}
         </div>
         <div className="flex flex-row justify-between">
-          <div className="text-12 font-light">{name.toUpperCase()}</div>
-          <div className="text-12 font-light">{basePrice} EUR</div>
+          <div className="text-12 font-light hover:text-white">
+            {name.toUpperCase()}
+          </div>
+          <div className="text-12 font-light hover:text-white">
+            {basePrice} EUR
+          </div>
         </div>
       </div>
     </div>

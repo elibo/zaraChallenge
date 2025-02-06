@@ -35,11 +35,11 @@ export const ProductDetail = () => {
 
   return (
     <>
-      {product && (
+      {product && selectedColor && selectedStorage && (
         <>
-          <div className="w-3xl flex flex-row justify-center items-center gap-[12vw]">
+          <div className="2xl:w-3xl flex max-[500px]:flex-col 2xl:flex-row justify-center items-center max-[500px]:gap-2 2xl:gap-[12vw]">
             <Image
-              className="w-312px h-257px"
+              className="max-[500px]:w-60"
               src={selectedColor.imageUrl}
               alt="img"
               width={510}
@@ -49,14 +49,14 @@ export const ProductDetail = () => {
               <div className="h-32px mb-2 text-24 font-light text-[#000000]">
                 {product.name}
               </div>
-              <div className="h-32px mb-20 text-20 font-light text-[#000000]">
+              <div className="h-32px 2xl:mb-20 max-[500px]:mb-8 text-20 font-light text-[#000000]">
                 {selectedStorage.price} EUR
               </div>
-              <div className="mb-20">
+              <div className="2xl:mb-20 max-[500px]:mb-4">
                 {" "}
                 <StoragePicker />{" "}
               </div>
-              <div className="mb-10">
+              <div className="2xl:mb-10 max-[500px]:mb-4">
                 {" "}
                 <ColorPicker />{" "}
               </div>

@@ -18,15 +18,15 @@ export const CartItem: FC<Props> = ({ item, index }) => {
   };
 
   return (
-    <div className="w-548px h-324px flex">
+    <div className="2xl:w-548px 2xl:h-324px flex">
       <Image
-        className="w-312px h-257px"
+        className="max-[500px]:w-40 max-[500px]:h-40 max-[500px]:pt-6"
         src={imageUrl}
         alt="img"
         width={312}
         height={257}
       />
-      <div className="h-100 flex flex-col justify-between pt-12 pr-8 pl-8">
+      <div className="h-100 flex flex-col justify-between 2xl:pt-12 max-[500px]:pt-6 pr-8 pl-8">
         <div>
           <div className="text-12 font-light">{name.toUpperCase()}</div>
           <div className="text-12 font-light">

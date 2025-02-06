@@ -5,7 +5,8 @@ import { StorageOption } from "@/interfaces/ProductEntity";
 import { useContext, useEffect, useState } from "react";
 
 const StoragePicker = () => {
-  const { product, setSelectedStorage } = useContext(DetailContext);
+  const { product, selectedStorage, setSelectedStorage } =
+    useContext(DetailContext);
   const [options, setOptions] = useState<StorageOption[]>([]);
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const StoragePicker = () => {
 
   return (
     <div className="flex flex-col font-light">
-      <div className="text-14 font-light mb-6">
+      <div className="text-14 font-light 2xl:mb-6">
         STORAGE. HOW MUCH SPACE DO YOU NEED?
       </div>
       <div className="grid grid-cols-3">
@@ -24,7 +25,13 @@ const StoragePicker = () => {
           options.map((option, index) => (
             <div
               key={index}
-              className="p-5 border border-black flex justify-center cursor-pointer"
+              style={{
+                borderColor:
+                  selectedStorage.capacity === option.capacity
+                    ? "black"
+                    : "#cccccc",
+              }}
+              className="p-5 border border-[#cccccc] flex justify-center cursor-pointer"
               onClick={() => setSelectedStorage(option)}
             >
               {option.capacity}

@@ -23,8 +23,12 @@ const ColorPicker = () => {
           options.map((option, index) => (
             <div
               key={index}
-              className={`h-7 w-7 m-2 border border-gray-200 cursor-pointer`}
-              style={{ backgroundColor: option.hexCode }}
+              className={`h-7 w-7 m-2 border border-[#cccccc] cursor-pointer`}
+              style={{
+                backgroundColor: option.hexCode,
+                borderColor:
+                  selectedColor.name === option.name ? "black" : "#cccccc",
+              }}
               onClick={() => setSelectedColor(option)}
             ></div>
           ))}

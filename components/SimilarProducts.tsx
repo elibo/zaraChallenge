@@ -16,7 +16,7 @@ export const SimilarProducts = () => {
   }, [product]);
 
   return (
-    <div className="flex flex-col ml-48 mt-16">
+    <div className="flex flex-col ml-48 mt-16 mr-24">
       <div className="text-20 font-light mb-2">SIMILAR ITEMS</div>
       <div className="flex flex-row mb-12 mw-80 overflow-x-auto">
         {similarProducts &&

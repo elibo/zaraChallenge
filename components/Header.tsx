@@ -14,9 +14,8 @@ export const Header = () => {
   };
 
   return (
-    <div className="ml-24 mt-12 pb-12 flex flex-row justify-between items-center cursor-pointer">
+    <div className="max-[500px]:m-4 max-[500px]:pb-4 ml-24 mt-12 2xl:pb-12  flex flex-row justify-between items-center cursor-pointer">
       <Image
-        className="h-24px w-74px "
         src="/logo.png"
         alt=" logo"
         width={74}
@@ -25,11 +24,10 @@ export const Header = () => {
         onClick={() => navigateTo("/")}
       />
       <div
-        className="mr-24 flex items-center gap-4 cursor-pointer"
+        className=" max-[500px]:mr-4 mr-24 flex items-center gap-4 cursor-pointer"
         onClick={() => navigateTo("/cart")}
       >
         <Image
-          className="size-24px"
           src="/bag-inactive.png"
           alt="bag-inactive"
           width={24}

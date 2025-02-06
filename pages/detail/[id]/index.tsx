@@ -17,10 +17,10 @@ const Page = () => {
   return (
     <CartProvider>
       <DetailProvider>
-        <div className="mt-8 ml-24 mr-24">
+        <div className="2xl:mt-8 2xl:ml-24 2xl:mr-24 max-[500px]:m-4">
           <Header />
           <div
-            className="ml-24 mb-12 text-12 font-light cursor-pointer"
+            className="max-[500px]:m-4 2xl:ml-24 2xl:mb-12 text-12 font-light cursor-pointer"
             onClick={handleBack}
           >
             BACK

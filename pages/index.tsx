@@ -13,11 +13,11 @@ const Page = () => {
       <ProductsProvider>
         <ProductsContext.Consumer>
           {({ isLoading, products }) => (
-            <>
+            <div className="max-[1500px]:m-4 pb-8">
               <Header />
               <SearchBar />
               {!isLoading && products.length > 0 ? (
-                <div className="ml-24 mr-24 grid grid-cols-5 gap-0">
+                <div className="2xl:ml-24 2xl:mr-24 grid 2xl:grid-cols-5 max-[1500px]:grid-rows-auto gap-0">
                   {products.map((product: ProductListEntity, index: number) => (
                     <ProductListItem key={index} {...product} />
                   ))}
@@ -25,7 +25,7 @@ const Page = () => {
               ) : (
                 <Loader />
               )}
-            </>
+            </div>
           )}
         </ProductsContext.Consumer>
       </ProductsProvider>
