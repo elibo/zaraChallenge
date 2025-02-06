@@ -33,7 +33,7 @@ const MyButton: FC<Props> = ({ bgColor, text, textColor }) => {
 
   return (
     <button
-      className="pl-20 pr-20 pt-5 pb-5 text-12 border border-black"
+      className="min-w-20 pl-10 pr-10 pt-5 pb-5 text-12 border border-black"
       type="button"
       style={{
         backgroundColor: bgColor,

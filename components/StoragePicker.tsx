@@ -17,7 +17,7 @@ const StoragePicker = () => {
 
   return (
     <div className="flex flex-col font-light">
-      <div className="text-14 font-light 2xl:mb-6">
+      <div className="text-14 font-light xl:mb-6">
         STORAGE. HOW MUCH SPACE DO YOU NEED?
       </div>
       <div className="grid grid-cols-3">

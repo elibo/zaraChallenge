@@ -4,11 +4,11 @@ import { useContext } from "react";
 const classString =
   "text-12 font-light border-black border-t-2 flex flex-row items-center";
 
-export const Specifications = () => {
+const Specifications = () => {
   const { product } = useContext(DetailContext);
 
   return (
-    <div className="ml-48 mr-24 mt-32 w-548px h-324px flex flex-col">
+    <div className="ml-48 mr-24 mt-32 w-548px h-324px flex flex-col max-[500px]:hidden">
       <div className="text-20 font-light mb-12">SPECIFICATIONS</div>
       {product && product.specs && (
         <div className="w-7xl grid grid-rows-11 grid-cols-3">
@@ -57,3 +57,4 @@ export const Specifications = () => {
     </div>
   );
 };
+export default Specifications;

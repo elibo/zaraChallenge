@@ -14,7 +14,7 @@ export const Header = () => {
   };
 
   return (
-    <div className="max-[500px]:m-4 max-[500px]:pb-4 ml-24 mt-12 2xl:pb-12  flex flex-row justify-between items-center cursor-pointer">
+    <div className="max-[500px]:m-4 max-[500px]:pb-4 ml-24 mt-12 xl:pb-12  flex flex-row justify-between items-center cursor-pointer">
       <Image
         src="/logo.png"
         alt=" logo"

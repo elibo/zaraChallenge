@@ -35,12 +35,12 @@ export const ProductDetail = () => {
 
   return (
     <>
-      {product && selectedColor && selectedStorage && (
+      {product && product.colorOptions && selectedColor && selectedStorage && (
         <>
-          <div className="2xl:w-3xl flex max-[500px]:flex-col 2xl:flex-row justify-center items-center max-[500px]:gap-2 2xl:gap-[12vw]">
+          <div className="xl:w-3xl flex max-[500px]:flex-col xl:flex-row justify-center items-center max-[500px]:gap-2 xl:gap-[12vw]">
             <Image
               className="max-[500px]:w-60"
-              src={selectedColor.imageUrl}
+              src={selectedColor.imageUrl || product.colorOptions[0].imageUrl}
               alt="img"
               width={510}
               height={630}
@@ -49,16 +49,14 @@ export const ProductDetail = () => {
               <div className="h-32px mb-2 text-24 font-light text-[#000000]">
                 {product.name}
               </div>
-              <div className="h-32px 2xl:mb-20 max-[500px]:mb-8 text-20 font-light text-[#000000]">
+              <div className="h-32px xl:mb-20 max-[500px]:mb-8 text-20 font-light text-[#000000]">
                 {selectedStorage.price} EUR
               </div>
-              <div className="2xl:mb-20 max-[500px]:mb-4">
-                {" "}
-                <StoragePicker />{" "}
+              <div className="xl:mb-20 max-[500px]:mb-4">
+                <StoragePicker />
               </div>
-              <div className="2xl:mb-10 max-[500px]:mb-4">
-                {" "}
-                <ColorPicker />{" "}
+              <div className="xl:mb-10 max-[500px]:mb-4">
+                <ColorPicker />
               </div>
               <MyButton bgColor="black" text="ADD TO CART" textColor="white" />
             </div>

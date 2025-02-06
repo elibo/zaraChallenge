@@ -17,7 +17,7 @@ const Page = () => {
               <Header />
               <SearchBar />
               {!isLoading && products.length > 0 ? (
-                <div className="2xl:ml-24 2xl:mr-24 grid 2xl:grid-cols-5 max-[1500px]:grid-rows-auto gap-0">
+                <div className="xl:ml-24 xl:mr-24 grid xl:grid-cols-5 max-[1500px]:grid-rows-auto gap-0">
                   {products.map((product: ProductListEntity, index: number) => (
                     <ProductListItem key={index} {...product} />
                   ))}
