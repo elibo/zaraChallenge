@@ -1,6 +1,9 @@
-import { ProductEntity } from "@/interfaces/ProductEntity";
+import { DetailContext } from "@/context/DetailProvider";
+import { useContext } from "react";
 
-export const Specifications = (product: ProductEntity) => {
+export const Specifications = () => {
+  const { product } = useContext(DetailContext);
+
   return (
     <div className="ml-48 mr-24 mt-32 w-548px h-324px flex flex-col">
       <div className="text-20 font-light mb-12">SPECIFICATIONS</div>

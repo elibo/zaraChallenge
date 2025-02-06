@@ -6,7 +6,11 @@ export interface ProductListEntity {
   imageUrl: string;
 }
 
-export interface ProductCartEntity extends Omit<ProductListEntity, "brand"> {
+export interface ProductCartEntity {
+  id: string;
+  name: string;
+  imageUrl: string;
   capacity: string;
+  price: number;
   color: string;
 }

@@ -5,8 +5,7 @@ import { useContext } from "react";
 import { CartItem } from "./CartItem";
 
 export const CartItems = () => {
-  const { cartItems, total } = useContext(CartContext);
-  console.log(cartItems, total);
+  const { cartItems } = useContext(CartContext);
 
   return (
     <>
@@ -15,7 +14,7 @@ export const CartItems = () => {
       </div>
       {cartItems.map((item, index) => (
         <div key={index} className="flex flex-row ml-24 mt-12 ">
-          <CartItem {...item} />
+          <CartItem item={item} index={index} />
         </div>
       ))}
     </>

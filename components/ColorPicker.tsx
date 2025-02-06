@@ -1,31 +1,35 @@
 import "@/app/globals.css";
-import { ProductContext } from "@/context/ProductProvider";
+import { DetailContext } from "@/context/DetailProvider";
 import { ColorOption } from "@/interfaces/ProductEntity";
-import { useContext } from "react";
 
-const ColorPicker = (colorOptions: Array<ColorOption>) => {
-  const { selectedColor, setSelectedColor } = useContext(ProductContext);
+import { useContext, useEffect, useState } from "react";
 
-  const parsedColors = Object.keys(colorOptions).map((key: string) => {
-    const parsed = colorOptions[Number(key)];
+const ColorPicker = () => {
+  const { product, selectedColor, setSelectedColor } =
+    useContext(DetailContext);
+  const [options, setOptions] = useState<ColorOption[]>([]);
 
-    return parsed;
-  });
+  useEffect(() => {
+    if (product && product.colorOptions) {
+      setOptions(product.colorOptions);
+    }
+  }, [product]);
 
   return (
     <div className="flex flex-col font-light">
       <div className="text-14 font-light pb-4">COLOR. PICK YOUR FAVOURITE</div>
       <div className="flex flex-row">
-        {parsedColors.map((option, index) => (
-          <div
-            key={index}
-            className={`h-7 w-7 m-2 border border-gray-200 cursor-pointer`}
-            style={{ backgroundColor: option.hexCode }}
-            onClick={() => setSelectedColor(option.name)}
-          ></div>
-        ))}
+        {options &&
+          options.map((option, index) => (
+            <div
+              key={index}
+              className={`h-7 w-7 m-2 border border-gray-200 cursor-pointer`}
+              style={{ backgroundColor: option.hexCode }}
+              onClick={() => setSelectedColor(option)}
+            ></div>
+          ))}
       </div>
-      <div className="text-12 font-light"> {selectedColor} </div>
+      <div className="text-12 font-light"> {selectedColor.name} </div>
     </div>
   );
 };

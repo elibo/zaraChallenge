@@ -5,7 +5,7 @@ interface CartContextType {
   cartItems: ProductCartEntity[];
   total: number;
   addToCart: (item: ProductCartEntity) => void;
-  removeFromCart: (id: string) => void;
+  removeFromCart: (idx: number) => void;
 }
 
 export const CartContext = createContext<CartContextType>({
@@ -21,21 +21,18 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   const addToCart = (item: ProductCartEntity) => {
     setCartItems([...cartItems, item]);
-    getCartTotal();
   };
 
-  const removeFromCart = (id: string) => {
+  const removeFromCart = (idx: number) => {
     const updatedCart = cartItems.filter(
-      (item: ProductCartEntity) => item.id !== id
+      (item: ProductCartEntity, index) => index !== idx
     );
+    if (updatedCart.length === 0) localStorage.removeItem("cartItems");
     setCartItems(updatedCart);
   };
 
   const getCartTotal = () => {
-    const priceTotal = cartItems.reduce(
-      (total, item) => total + item.basePrice,
-      total
-    );
+    const priceTotal = cartItems.reduce((total, item) => total + item.price, 0);
     setTotal(priceTotal);
   };
 
@@ -43,6 +40,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     if (cartItems.length > 0) {
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }
+    getCartTotal();
   }, [cartItems]);
 
   useEffect(() => {

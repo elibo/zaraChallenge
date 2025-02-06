@@ -2,21 +2,19 @@
 import { CartContext } from "@/context/CartProvider";
 import { ProductCartEntity } from "@/interfaces/ProductList";
 import Image from "next/image";
-import { useContext } from "react";
+import { FC, useContext } from "react";
 
-export const CartItem = ({
-  name,
-  id,
-  basePrice,
-  imageUrl,
-  capacity,
-  color,
-}: ProductCartEntity) => {
-  const { cartItems, total } = useContext(CartContext);
-  console.log(cartItems, total);
+interface Props {
+  item: ProductCartEntity;
+  index: number;
+}
+
+export const CartItem: FC<Props> = ({ item, index }) => {
   const { removeFromCart } = useContext(CartContext);
-  const deleteFromCart = (id: string) => {
-    removeFromCart(id);
+  const { imageUrl, name, price, capacity, color } = item;
+
+  const deleteFromCart = (index: number) => {
+    removeFromCart(index);
   };
 
   return (
@@ -34,12 +32,12 @@ export const CartItem = ({
           <div className="text-12 font-light">
             {capacity} GB | {color.toUpperCase()}{" "}
           </div>
-          <div className="text-12 font-light pt-6">{basePrice} EUR</div>
+          <div className="text-12 font-light pt-6">{price} EUR</div>
         </div>
 
         <div
           className="pb-12 text-12 font-light text-[#DF0000] cursor-pointer"
-          onClick={() => deleteFromCart(id)}
+          onClick={() => deleteFromCart(index)}
         >
           Eliminar
         </div>

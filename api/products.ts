@@ -15,9 +15,9 @@ export const getProducts = async ({
 }) =>
   await (
     await fetch(
-      `${BASE_URL}/products${limit ? `?limit=${limit}` : ""}${
-        search ? `?search=${search}` : ""
-      }${offset ? `?offset=${offset}` : ""}`,
+      `${BASE_URL}/products?limit=${limit}
+       ${search ? `&search=${search}` : ""}
+       ${offset ? `&offset=${offset}` : ""}`,
       {
         headers: myHeaders,
       }

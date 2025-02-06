@@ -1,13 +1,11 @@
-import { ProductContext } from "@/context/ProductProvider";
+import { ProductsContext } from "@/context/ProductsProvider";
 import { ChangeEvent, useContext } from "react";
 
 export const SearchBar = () => {
-  const { products } = useContext(ProductContext);
+  const { products, setSearch } = useContext(ProductsContext);
 
   const handleSearch = (ev: ChangeEvent<HTMLInputElement>) => {
-    if (ev.target.value.length > 3) {
-      console.log("handle search");
-    }
+    setSearch(ev.target.value);
   };
 
   return (

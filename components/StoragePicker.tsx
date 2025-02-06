@@ -1,12 +1,18 @@
+"use client";
 import "@/app/globals.css";
+import { DetailContext } from "@/context/DetailProvider";
 import { StorageOption } from "@/interfaces/ProductEntity";
+import { useContext, useEffect, useState } from "react";
 
-const StoragePicker = (storageOptions: Array<StorageOption>) => {
-  const parsedStorage = Object.keys(storageOptions).map((key: string) => {
-    const parsed = storageOptions[Number(key)];
+const StoragePicker = () => {
+  const { product, setSelectedStorage } = useContext(DetailContext);
+  const [options, setOptions] = useState<StorageOption[]>([]);
 
-    return parsed;
-  });
+  useEffect(() => {
+    if (product && product.storageOptions) {
+      setOptions(product.storageOptions);
+    }
+  }, [product]);
 
   return (
     <div className="flex flex-col font-light">
@@ -14,15 +20,16 @@ const StoragePicker = (storageOptions: Array<StorageOption>) => {
         STORAGE. HOW MUCH SPACE DO YOU NEED?
       </div>
       <div className="grid grid-cols-3">
-        {parsedStorage.map((option, index) => (
-          <div
-            key={index}
-            className="p-5 border border-black flex justify-center cursor-pointer"
-            // onClick={() => setSelectedCapacity(option.capacity)}
-          >
-            {option.capacity}
-          </div>
-        ))}
+        {options &&
+          options.map((option, index) => (
+            <div
+              key={index}
+              className="p-5 border border-black flex justify-center cursor-pointer"
+              onClick={() => setSelectedStorage(option)}
+            >
+              {option.capacity}
+            </div>
+          ))}
       </div>
     </div>
   );

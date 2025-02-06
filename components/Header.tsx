@@ -9,12 +9,12 @@ export const Header = () => {
   const { cartItems } = useContext(CartContext);
   const router = useRouter();
 
-  const goCart = () => {
-    router.push(`/cart`);
+  const navigateTo = (route: string) => {
+    router.push(route);
   };
 
   return (
-    <div className="ml-24 mt-12 pb-12 flex flex-row justify-between items-center">
+    <div className="ml-24 mt-12 pb-12 flex flex-row justify-between items-center cursor-pointer">
       <Image
         className="h-24px w-74px "
         src="/logo.png"
@@ -22,10 +22,11 @@ export const Header = () => {
         width={74}
         height={24}
         priority
+        onClick={() => navigateTo("/")}
       />
       <div
         className="mr-24 flex items-center gap-4 cursor-pointer"
-        onClick={goCart}
+        onClick={() => navigateTo("/cart")}
       >
         <Image
           className="size-24px"

@@ -3,9 +3,9 @@ import { Header } from "@/components/Header";
 
 import { useRouter } from "next/router";
 import { CartProvider } from "@/context/CartProvider";
-import ProductProvider from "@/context/ProductProvider";
 
 import { ProductDetail } from "@/components/ProductDetail";
+import DetailProvider from "@/context/DetailProvider";
 
 const Page = () => {
   const router = useRouter();
@@ -15,8 +15,8 @@ const Page = () => {
   };
 
   return (
-    <ProductProvider>
-      <CartProvider>
+    <CartProvider>
+      <DetailProvider>
         <div className="mt-8 ml-24 mr-24">
           <Header />
           <div
@@ -27,8 +27,8 @@ const Page = () => {
           </div>
           <ProductDetail />
         </div>
-      </CartProvider>
-    </ProductProvider>
+      </DetailProvider>
+    </CartProvider>
   );
 };
 
