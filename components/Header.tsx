@@ -43,7 +43,7 @@ export const Header = () => {
       >
         <Image
           id="cart"
-          src="/bag-inactive.png"
+          src="/cart.png"
           alt="cart"
           width={24}
           height={24}
