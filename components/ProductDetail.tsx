@@ -41,7 +41,7 @@ export const ProductDetail = () => {
             <Image
               className="max-[500px]:w-60"
               src={selectedColor.imageUrl! || product.colorOptions[0].imageUrl!}
-              alt="img"
+              alt="imgage"
               width={510}
               height={630}
             />
