@@ -5,7 +5,7 @@ import Image from "next/image";
 import StoragePicker from "./StoragePicker";
 import ColorPicker from "./ColorPicker";
 import MyButton from "./MyButton";
-import { Specifications } from "./Specifications";
+import Specifications from "./Specifications";
 import { SimilarProducts } from "./SimilarProducts";
 import { DetailContext } from "@/context/DetailProvider";
 
