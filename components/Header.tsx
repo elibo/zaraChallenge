@@ -27,7 +27,7 @@ export const Header = () => {
       <Image
         id="header-logo"
         tabIndex={0}
-        src="/logo.png"
+        src="./logo.png"
         alt="header-logo"
         width={74}
         height={24}
@@ -43,7 +43,7 @@ export const Header = () => {
       >
         <Image
           id="cart"
-          src="/cart.png"
+          src="./cart.png"
           alt="cart"
           width={24}
           height={24}
