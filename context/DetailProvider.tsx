@@ -1,10 +1,7 @@
-import { useState, useEffect, createContext } from "react";
-import { getProduct } from "../api/products";
-import {
-  ColorOption,
-  ProductEntity,
-  StorageOption,
-} from "@/interfaces/ProductEntity";
+'use client';
+import {useState, useEffect, createContext} from 'react';
+import {getProduct} from '../api/products';
+import {ColorOption, ProductEntity, StorageOption} from '@/interfaces/ProductEntity';
 
 interface DetailContextType {
   isLoading: boolean;
@@ -26,8 +23,8 @@ export const DetailContext = createContext<DetailContextType>({
   setProductId: () => {},
 });
 
-const DetailProvider = ({ children }: { children: React.ReactNode }) => {
-  const [id, setProductId] = useState("");
+const DetailProvider = ({children}: {children: React.ReactNode}) => {
+  const [id, setProductId] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [product, setProduct] = useState({});
   const [selectedColor, setSelectedColor] = useState({});
@@ -56,8 +53,7 @@ const DetailProvider = ({ children }: { children: React.ReactNode }) => {
         setProductId,
         setSelectedColor,
         setSelectedStorage,
-      }}
-    >
+      }}>
       {children}
     </DetailContext.Provider>
   );
