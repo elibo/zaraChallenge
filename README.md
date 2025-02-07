@@ -36,26 +36,19 @@ Los siguientes pasos a seguir para ejecutar en local
     ```sh
     npm install
     ```
-3.  Dependiendo de si quieres correr una version de desarrollo, una build o correr los test ejecuta los siguientes comandos
-
-    Para correr una version dev
-
+3.  Para correr una version de desarrollo
     ```sh
     npm run dev
     ```
-
-        Para correr una version build
-
+4.  Para una version build
     ```sh
     npm run build
     npm run start
     ```
-
-        Para correr los test
-
+5.  Para correr los tests
     ```sh
     npm run test
-    ```
+    ``` 
 
 ## Contacto
 
