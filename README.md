@@ -1,5 +1,3 @@
-<a id="readme-top"></a>
-
 <div align="center">
   <h3 align="center">Prueba Técnica 2025</h3>
 
@@ -16,8 +14,6 @@ Este proyecto ha sido hecho con ReactJS, Next y TailwindCSS. Para llamadas API h
 
 - [![Next][Next.js]][Next-url]
 - [![React][React.js]][React-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Requisitos previos
 
@@ -61,8 +57,6 @@ Los siguientes pasos a seguir para ejecutar en local
     npm run test
     ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Contacto
 
 Elena Pereira - epv1991@gmail.com
@@ -70,8 +64,6 @@ Elena Pereira - epv1991@gmail.com
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 Link Proyecto: [https://github.com/elibo/zaraChallenge](https://github.com/elibo/zaraChallenge)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/elena-pereira-vazquez-637b47113/
