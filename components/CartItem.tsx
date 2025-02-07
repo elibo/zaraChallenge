@@ -17,7 +17,10 @@ export const CartItem: FC<Props> = ({ item, index }) => {
     removeFromCart(index);
   };
 
-  const onKeyPress = (event: KeyboardEvent<HTMLDivElement>, index: number) => {
+  const onKeyPress = (
+    event: React.KeyboardEvent<HTMLElement> | KeyboardEvent,
+    index: number
+  ) => {
     if (event.key === "Enter") {
       removeFromCart(index);
     }

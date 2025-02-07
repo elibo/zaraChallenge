@@ -16,7 +16,7 @@ const StoragePicker = () => {
   }, [product]);
 
   const onKeyPress = (
-    ev: KeyboardEvent<HTMLDivElement>,
+    ev: React.KeyboardEvent<HTMLElement> | KeyboardEvent,
     option: StorageOption
   ) => {
     if (ev.key === "Enter") {

@@ -16,7 +16,9 @@ export const ProductListItem = ({
     router.push(`/detail/${id}`);
   };
 
-  const onKeyPress = (event: KeyboardEvent<HTMLDivElement>) => {
+  const onKeyPress = (
+    event: React.KeyboardEvent<HTMLElement> | KeyboardEvent
+  ) => {
     if (event.key === "Enter") {
       goDetail();
     }

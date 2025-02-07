@@ -16,7 +16,7 @@ const ColorPicker = () => {
   }, [product]);
 
   const onKeyPress = (
-    ev: KeyboardEvent<HTMLDivElement>,
+    ev: React.KeyboardEvent<HTMLElement> | KeyboardEvent,
     option: ColorOption
   ) => {
     if (ev.key === "Enter") {

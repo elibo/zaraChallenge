@@ -14,7 +14,9 @@ const Page = () => {
     router.back();
   };
 
-  const onKeyPress = (event: KeyboardEvent<HTMLDivElement>) => {
+  const onKeyPress = (
+    event: React.KeyboardEvent<HTMLElement> | KeyboardEvent
+  ) => {
     if (event.key === "Enter") {
       handleBack();
     }
