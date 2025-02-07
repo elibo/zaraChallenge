@@ -1,12 +1,12 @@
-import { CartContext } from "@/context/CartProvider";
-import MyButton from "./MyButton";
-import { useContext } from "react";
+import {CartContext} from '@/context/CartProvider';
+import MyButton from './MyButton';
+import {useContext} from 'react';
 
 export const CartFooter = () => {
-  const { total, cartItems } = useContext(CartContext);
+  const {total, cartItems} = useContext(CartContext);
 
   return (
-    <div className="xl:ml-24 grid max-[500px]:grid-cols-2 max-[500px]:grid-rows-2 xl:grid-cols-3 justify-between xl:w-100 xl:p-20 max-[500px]:m-4">
+    <div className="xl:ml-24 grid max-[500px]:grid-cols-2 max-[500px]:grid-rows-2 xl:grid-cols-3 justify-between xl:w-100 xl:p-20  max-[500px]:m-4">
       <div className="w-1/2 max-[500px]:order-2 order-1 row-span-2">
         <MyButton bgColor="white" text="CONTINUE SHOPPING" textColor="black" />
       </div>

@@ -1,5 +1,6 @@
-import { ProductCartEntity } from "@/interfaces/ProductList";
-import { createContext, useEffect, useState } from "react";
+'use client';
+import {ProductCartEntity} from '@/interfaces/ProductList';
+import {createContext, useEffect, useState} from 'react';
 
 interface CartContextType {
   cartItems: ProductCartEntity[];
@@ -15,7 +16,7 @@ export const CartContext = createContext<CartContextType>({
   removeFromCart: () => {},
 });
 
-export const CartProvider = ({ children }: { children: React.ReactNode }) => {
+export const CartProvider = ({children}: {children: React.ReactNode}) => {
   const [cartItems, setCartItems] = useState<ProductCartEntity[]>([]);
   const [total, setTotal] = useState(0);
 
@@ -24,10 +25,8 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const removeFromCart = (idx: number) => {
-    const updatedCart = cartItems.filter(
-      (item: ProductCartEntity, index) => index !== idx
-    );
-    if (updatedCart.length === 0) localStorage.removeItem("cartItems");
+    const updatedCart = cartItems.filter((item: ProductCartEntity, index) => index !== idx);
+    if (updatedCart.length === 0) localStorage.removeItem('cartItems');
     setCartItems(updatedCart);
   };
 
@@ -38,23 +37,17 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (cartItems.length > 0) {
-      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }
     getCartTotal();
   }, [cartItems]);
 
   useEffect(() => {
-    const cartItems = localStorage.getItem("cartItems");
+    const cartItems = localStorage.getItem('cartItems');
     if (cartItems) {
       setCartItems(JSON.parse(cartItems));
     }
   }, []);
 
-  return (
-    <CartContext.Provider
-      value={{ cartItems, total, addToCart, removeFromCart }}
-    >
-      {children}
-    </CartContext.Provider>
-  );
+  return <CartContext.Provider value={{cartItems, total, addToCart, removeFromCart}}>{children}</CartContext.Provider>;
 };

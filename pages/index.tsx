@@ -1,36 +1,18 @@
-import { ProductListEntity } from "@/interfaces/ProductList";
-import "@/app/globals.css";
-import { Header } from "@/components/Header";
-import { ProductListItem } from "@/components/ProductListItem";
-import Loader from "@/components/Loader";
-import { SearchBar } from "@/components/SearchBar";
-import ProductsProvider, { ProductsContext } from "@/context/ProductsProvider";
-import { CartProvider } from "@/context/CartProvider";
+import Layout from '@/app/layout';
+import {Products} from '@/components/Products';
+import {SearchBar} from '@/components/SearchBar';
+import {FC} from 'react';
 
-const Page = () => {
+const Home: FC = () => {
   return (
-    <CartProvider>
-      <ProductsProvider>
-        <ProductsContext.Consumer>
-          {({ isLoading, products }) => (
-            <div className="max-[1500px]:m-4 pb-8">
-              <Header />
-              <SearchBar />
-              {!isLoading && products.length > 0 ? (
-                <div className="xl:ml-24 xl:mr-24 grid xl:grid-cols-5 max-[1500px]:grid-rows-auto gap-0">
-                  {products.map((product: ProductListEntity, index: number) => (
-                    <ProductListItem key={index} {...product} />
-                  ))}
-                </div>
-              ) : (
-                <Loader />
-              )}
-            </div>
-          )}
-        </ProductsContext.Consumer>
-      </ProductsProvider>
-    </CartProvider>
+    <Layout>
+      <div className="max-[1500px]:m-4 pb-8">
+        <SearchBar />
+        <Products />
+      </div>
+    </Layout>
   );
 };
 
-export default Page;
+Home.displayName = 'Home';
+export default Home;

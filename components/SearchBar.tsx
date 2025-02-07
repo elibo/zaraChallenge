@@ -1,8 +1,8 @@
-import { ProductsContext } from "@/context/ProductsProvider";
-import { ChangeEvent, useContext } from "react";
+import {ProductsContext} from '@/context/ProductsProvider';
+import {ChangeEvent, useContext} from 'react';
 
 export const SearchBar = () => {
-  const { products, setSearch } = useContext(ProductsContext);
+  const {products, setSearch} = useContext(ProductsContext);
 
   const handleSearch = (ev: ChangeEvent<HTMLInputElement>) => {
     setSearch(ev.target.value);
@@ -16,9 +16,7 @@ export const SearchBar = () => {
         onChange={handleSearch}
       />
       <hr />
-      <div className=" pt-4 text-12 font-light text-[#000000]">
-        {products.length} RESULTS
-      </div>
+      <div className=" pt-4 text-12 font-light text-[#000000]">{products.length} RESULTS</div>
     </div>
   );
 };

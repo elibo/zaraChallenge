@@ -1,24 +1,17 @@
-import { Header } from "@/components/Header";
-import Loader from "@/components/Loader";
-import "@/app/globals.css";
-import { CartProvider } from "@/context/CartProvider";
-import { CartItems } from "@/components/CartItems";
-import { CartFooter } from "@/components/CartFooter";
+import Loader from '@/components/Loader';
+import {CartItems} from '@/components/CartItems';
+import {CartFooter} from '@/components/CartFooter';
+import Layout from '@/app/layout';
 
 const Page = () => {
   return (
-    <CartProvider>
-      <div className="flex flex-col h-screen justify-between">
-        <header>
-          <Header />
-          <Loader />
-        </header>
-        <main className="mb-auto ">
-          <CartItems />
-        </main>
+    <Layout>
+      <Loader />
+      <div className="flex flex-col h-[85vh] justify-start">
+        <CartItems />
         <CartFooter />
       </div>
-    </CartProvider>
+    </Layout>
   );
 };
 
