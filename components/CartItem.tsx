@@ -36,13 +36,15 @@ export const CartItem: FC<Props> = ({ item, index }) => {
         height={257}
       />
       <div className="h-100 flex flex-col justify-between xl:pt-12 max-[500px]:pt-6 pr-8 pl-8">
-        <div>
-          <div className="text-12 font-light">{name.toUpperCase()}</div>
-          <div className="text-12 font-light">
-            {capacity} GB | {color.toUpperCase()}{" "}
+        {name && color && (
+          <div>
+            <div className="text-12 font-light">{name.toUpperCase()}</div>
+            <div className="text-12 font-light">
+              {capacity} GB | {color.toUpperCase()}{" "}
+            </div>
+            <div className="text-12 font-light pt-6">{price} EUR</div>
           </div>
-          <div className="text-12 font-light pt-6">{price} EUR</div>
-        </div>
+        )}
 
         <div
           tabIndex={0}

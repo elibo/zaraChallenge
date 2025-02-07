@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 import { CartContext } from "@/context/CartProvider";
 import { DetailContext } from "@/context/DetailProvider";
+import { ProductCartEntity } from "@/interfaces/ProductList";
 import { useRouter } from "next/router";
 import { FC, useContext } from "react";
 
@@ -26,7 +27,7 @@ const MyButton: FC<Props> = ({ bgColor, text, textColor }) => {
         color: selectedColor.name,
         imageUrl: selectedColor.imageUrl,
       };
-      addToCart(cartItem);
+      addToCart(cartItem as ProductCartEntity);
     } else {
       router.push("/");
     }

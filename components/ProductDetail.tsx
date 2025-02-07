@@ -40,7 +40,7 @@ export const ProductDetail = () => {
           <div className="xl:w-3xl flex max-[500px]:flex-col xl:flex-row justify-center items-center max-[500px]:gap-2 xl:gap-[12vw]">
             <Image
               className="max-[500px]:w-60"
-              src={selectedColor.imageUrl || product.colorOptions[0].imageUrl}
+              src={selectedColor.imageUrl! || product.colorOptions[0].imageUrl!}
               alt="img"
               width={510}
               height={630}

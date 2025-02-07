@@ -1,4 +1,5 @@
 import { DetailContext } from "@/context/DetailProvider";
+import { Specs } from "@/interfaces/ProductEntity";
 import { useContext } from "react";
 
 const classString =
@@ -30,7 +31,7 @@ const Specifications = () => {
             <>
               <div className={classString}>{parseKey(key)}</div>
               <div className={` ${classString} col-span-2`}>
-                {product.specs[key]}
+                {product && product.specs && product.specs[key as keyof Specs]}
               </div>
             </>
           ))}
