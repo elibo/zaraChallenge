@@ -15,6 +15,12 @@ const nextConfig: NextConfig = {
         pathname: "/images/**",
       },
     ],
+    localPatterns: [
+      {
+        pathname: "/public/**",
+        search: "",
+      },
+    ],
   },
 };
 
