@@ -14,6 +14,12 @@ const Page = () => {
     router.back();
   };
 
+  const onKeyPress = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter") {
+      handleBack();
+    }
+  };
+
   return (
     <CartProvider>
       <DetailProvider>
@@ -21,6 +27,8 @@ const Page = () => {
           <Header />
           <div
             className="max-[500px]:m-4 xl:ml-24 xl:mb-12 text-12 font-light cursor-pointer"
+            tabIndex={0}
+            onKeyUp={onKeyPress}
             onClick={handleBack}
           >
             BACK

@@ -15,6 +15,7 @@ const MyButton: FC<Props> = ({ bgColor, text, textColor }) => {
   const { product, selectedColor, selectedStorage } = useContext(DetailContext);
 
   const router = useRouter();
+
   const doAction = () => {
     if (text === "ADD TO CART") {
       const cartItem = {
@@ -35,6 +36,7 @@ const MyButton: FC<Props> = ({ bgColor, text, textColor }) => {
     <button
       className="min-w-20 pl-10 pr-10 pt-5 pb-5 text-12 border border-black"
       type="button"
+      tabIndex={0}
       style={{
         backgroundColor: bgColor,
         color: textColor,

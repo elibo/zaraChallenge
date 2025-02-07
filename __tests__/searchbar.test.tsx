@@ -15,11 +15,11 @@ describe("SearchBar test:", () => {
   afterEach(cleanup);
 
   it("should render component", () => {
-    const { input } = setup();
+    setup();
   });
 
   it("should render placeholder", () => {
-    const { input } = setup();
+    setup();
     screen.getByPlaceholderText("Search for a smartphone...");
   });
 

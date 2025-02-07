@@ -15,6 +15,15 @@ const StoragePicker = () => {
     }
   }, [product]);
 
+  const onKeyPress = (
+    ev: KeyboardEvent<HTMLDivElement>,
+    option: StorageOption
+  ) => {
+    if (ev.key === "Enter") {
+      setSelectedStorage(option);
+    }
+  };
+
   return (
     <div className="flex flex-col font-light">
       <div className="text-14 font-light xl:mb-6">
@@ -25,12 +34,14 @@ const StoragePicker = () => {
           options.map((option, index) => (
             <div
               key={index}
+              tabIndex={0}
               style={{
                 borderColor:
                   selectedStorage.capacity === option.capacity
                     ? "black"
                     : "#cccccc",
               }}
+              onKeyUp={(ev) => onKeyPress(ev, option)}
               className="p-5 border border-[#cccccc] flex justify-center cursor-pointer"
               onClick={() => setSelectedStorage(option)}
             >

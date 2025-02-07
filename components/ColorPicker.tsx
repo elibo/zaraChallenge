@@ -15,6 +15,15 @@ const ColorPicker = () => {
     }
   }, [product]);
 
+  const onKeyPress = (
+    ev: KeyboardEvent<HTMLDivElement>,
+    option: ColorOption
+  ) => {
+    if (ev.key === "Enter") {
+      setSelectedColor(option);
+    }
+  };
+
   return (
     <div className="flex flex-col font-light">
       <div className="text-14 font-light pb-4">COLOR. PICK YOUR FAVOURITE</div>
@@ -23,12 +32,14 @@ const ColorPicker = () => {
           options.map((option, index) => (
             <div
               key={index}
+              tabIndex={0}
               className={`h-7 w-7 m-2 border border-[#cccccc] cursor-pointer`}
               style={{
                 backgroundColor: option.hexCode,
                 borderColor:
                   selectedColor.name === option.name ? "black" : "#cccccc",
               }}
+              onKeyUp={(ev) => onKeyPress(ev, option)}
               onClick={() => setSelectedColor(option)}
             ></div>
           ))}

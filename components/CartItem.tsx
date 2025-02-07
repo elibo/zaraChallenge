@@ -17,6 +17,12 @@ export const CartItem: FC<Props> = ({ item, index }) => {
     removeFromCart(index);
   };
 
+  const onKeyPress = (event: KeyboardEvent<HTMLDivElement>, index: number) => {
+    if (event.key === "Enter") {
+      removeFromCart(index);
+    }
+  };
+
   return (
     <div className="xl:w-548px xl:h-324px flex">
       <Image
@@ -36,6 +42,8 @@ export const CartItem: FC<Props> = ({ item, index }) => {
         </div>
 
         <div
+          tabIndex={0}
+          onKeyUp={(ev) => onKeyPress(ev, index)}
           className="pb-12 text-12 font-light text-[#DF0000] cursor-pointer"
           onClick={() => deleteFromCart(index)}
         >

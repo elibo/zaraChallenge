@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useContext } from "react";
+import { KeyboardEvent, useContext } from "react";
 import { useRouter } from "next/navigation";
 import { CartContext } from "@/context/CartProvider";
 
@@ -13,23 +13,38 @@ export const Header = () => {
     router.push(route);
   };
 
+  const onKeyPress = (event: KeyboardEvent, route: string) => {
+    if (event.key === "Enter") {
+      navigateTo(route);
+    }
+  };
+
   return (
-    <div className="max-[500px]:m-4 max-[500px]:pb-4 ml-24 mt-12 xl:pb-12  flex flex-row justify-between items-center cursor-pointer">
+    <div
+      id="header"
+      className="max-[500px]:m-4 max-[500px]:pb-4 ml-24 mt-12 xl:pb-12  flex flex-row justify-between items-center cursor-pointer"
+    >
       <Image
+        id="header-logo"
+        tabIndex={0}
         src="/logo.png"
-        alt=" logo"
+        alt="header-logo"
         width={74}
         height={24}
         priority
+        onKeyUp={(ev) => onKeyPress(ev, "/")}
         onClick={() => navigateTo("/")}
       />
       <div
         className=" max-[500px]:mr-4 mr-24 flex items-center gap-4 cursor-pointer"
+        tabIndex={0}
+        onKeyUp={(ev) => onKeyPress(ev, "/cart")}
         onClick={() => navigateTo("/cart")}
       >
         <Image
+          id="cart"
           src="/bag-inactive.png"
-          alt="bag-inactive"
+          alt="cart"
           width={24}
           height={24}
           priority

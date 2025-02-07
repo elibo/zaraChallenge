@@ -16,8 +16,17 @@ export const ProductListItem = ({
     router.push(`/detail/${id}`);
   };
 
+  const onKeyPress = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter") {
+      goDetail();
+    }
+  };
+
   return (
     <div
+      tabIndex={0}
+      role="button"
+      onKeyUp={(ev) => onKeyPress(ev)}
       className="border border-black flex flex-col justify-between size-344px cursor-pointer transition delay-150 duration-300  hover:bg-black hover:text-white"
       onClick={goDetail}
     >
